@@ -1,0 +1,5 @@
+check cases for zero length things
+check port is okay upon open
+check disconnect
+check switch syntax
+check constant loading syntax
