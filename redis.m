@@ -17,6 +17,7 @@ classdef redis < handle
         function obj = redis(host, port)
             obj.buf = '';
             obj.socket = tcpip(host, port);
+            obj.socket.InputBufferSize = 65536;
             fopen(obj.socket);
             obj.socket.Terminator = '';
 
