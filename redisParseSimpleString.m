@@ -1,10 +1,12 @@
 function reply = redisParseSimpleString(ctx, type_char)
+    loadRedisEnvironment;
+
     if nargin < 2
         type_char = '+'
     end
 
     reply = [];
-    reply.type = REDIS_REPLY_STRING;
+    reply.type = REDIS_REPLY_STATUS;
     reply.data = [];
 
     while length(ctx.buf) < 3 % +\r\n
@@ -25,13 +27,7 @@ function reply = redisParseSimpleString(ctx, type_char)
 
     data_end = breaks(1) - 1;
 
-    if ~strcmp(ctx.buf((data_end+1):(data_end+2)), CRLF)
-        reply.type = REDIS_REPLY_ERROR;
-        reply.data = 'no terminating crlf';
-        return;
-    end
-
-    reply.data = ctx.buf(1:data_end);
+    reply.data = ctx.buf(2:data_end);
 
     redisConsumeBuf(ctx, data_end + 2);
 end

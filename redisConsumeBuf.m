@@ -1,4 +1,6 @@
 function redisConsumeBuf(ctx, n)
+    loadRedisEnvironment;
+
     if nargin < 2
         ctx.buf = '';
     else:

@@ -1,4 +1,6 @@
 function reply = redisParseMultiBulk(ctx)
+    loadRedisEnvironment;
+
     reply = [];
     reply.type = REDIS_REPLY_ARRAY;
     reply.data = [];
