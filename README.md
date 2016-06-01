@@ -7,7 +7,7 @@ hiredis clone for matlab
 In this example we connect to a database, get all items from a list, and
 store them in a cell `vocab` that can be accessed as, for example, `vocab{47}`.
 
-```
+```matlab
 redis_host = 'localhost';
 redis_port = 6379;
 redis_db = redis(redis_host, redis_port);
